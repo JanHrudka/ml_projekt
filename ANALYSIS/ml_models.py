@@ -36,20 +36,14 @@ class MLModels:
         return y_predicted
 
     def decision_tree(self, model_kwargs):
-        classifier = make_pipeline(
-            StandardScaler(),
-            clf = RandomForestClassifier(**model_kwargs)
-        )
+        clf = RandomForestClassifier(**model_kwargs)
         classifier.fit(self.X_train, self.y_train)
         y_predicted = classifier.predict(self.X_test)
 
         return y_predicted
 
     def random_forest(self, model_kwargs):
-        classifier = make_pipeline(
-            StandardScaler(),
-            clf = RandomForestClassifier(**model_kwargs)
-        )
+        clf = RandomForestClassifier(**model_kwargs)
         classifier.fit(self.X_train, self.y_train)
         y_predicted = classifier.predict(self.X_test)
 
