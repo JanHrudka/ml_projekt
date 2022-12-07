@@ -2,7 +2,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
-
+from sklearn.ensemble import RandomForestClassifier
 
 class MLModels:
 
@@ -29,6 +29,26 @@ class MLModels:
         classifier = make_pipeline(
             StandardScaler(),
             LogisticRegression(**model_kwargs)
+        )
+        classifier.fit(self.X_train, self.y_train)
+        y_predicted = classifier.predict(self.X_test)
+
+        return y_predicted
+
+    def decision_tree(self, model_kwargs):
+        classifier = make_pipeline(
+            StandardScaler(),
+            clf = RandomForestClassifier(**model_kwargs)
+        )
+        classifier.fit(self.X_train, self.y_train)
+        y_predicted = classifier.predict(self.X_test)
+
+        return y_predicted
+
+    def random_forest(self, model_kwargs):
+        classifier = make_pipeline(
+            StandardScaler(),
+            clf = RandomForestClassifier(**model_kwargs)
         )
         classifier.fit(self.X_train, self.y_train)
         y_predicted = classifier.predict(self.X_test)
