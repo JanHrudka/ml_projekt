@@ -25,7 +25,10 @@ SELECTION_DICT = {"uL22": "segid S",
                                                "747 748 750 751 1614))"}
 
 MODEL_KWARGS_DICT = {"svc": {"kernel": "rbf"},
-                     "logistic_regression": {"max_iter": 10000}}
+                     "logistic_regression": {"max_iter": 10000}
+                    "decision_tree": {"n_estimators": 1, "bootstrap": False, 
+                                     "max_depth": 100}
+                     "random_forest": {"n_estimators": 100, "bootstrap": True}}
 
 # all possible combinations of trajectory pairs
 trj_combinations = []
