@@ -2,7 +2,7 @@ import numpy as np
 
 N_TRJ = 4
 TRJ_INDICES = [i for i in range(N_TRJ)]
-# 1 frame = 0.5 ns
+# 1 frame = 0.2 ns
 TRJ_END_FRAME = 5000
 TRJ_START_FRAME = 1000
 TRJ_LEN = TRJ_END_FRAME - TRJ_START_FRAME
@@ -26,11 +26,11 @@ SELECTION_DICT = {"uL22": "segid S",
 
 MODEL_KWARGS_DICT = {"svc": {"kernel": "rbf"},
                      "logistic_regression": {"max_iter": 10000},
-                    "decision_tree": {"n_estimators": 1, "bootstrap": False, 
-                                     "max_depth": 100},
-                     "random_forest": {"n_estimators": 100, "bootstrap": True
-                                      "max_depth": 100}
-                    }
+                     "decision_tree": {"n_estimators": 1, "bootstrap": False,
+                                       "max_depth": 100},
+                     "random_forest": {"n_estimators": 100, "bootstrap": True,
+                                       "max_depth": 100}
+                     }
 
 # all possible combinations of trajectory pairs
 trj_combinations = []

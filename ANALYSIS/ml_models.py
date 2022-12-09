@@ -4,6 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 
+
 class MLModels:
 
     def __init__(self, X_train, X_test, y_train, y_test):
@@ -36,14 +37,16 @@ class MLModels:
         return y_predicted
 
     def decision_tree(self, model_kwargs):
-        clf = RandomForestClassifier(**model_kwargs)
+
+        classifier = RandomForestClassifier(**model_kwargs)
         classifier.fit(self.X_train, self.y_train)
         y_predicted = classifier.predict(self.X_test)
 
         return y_predicted
 
     def random_forest(self, model_kwargs):
-        clf = RandomForestClassifier(**model_kwargs)
+
+        classifier = RandomForestClassifier(**model_kwargs)
         classifier.fit(self.X_train, self.y_train)
         y_predicted = classifier.predict(self.X_test)
 
