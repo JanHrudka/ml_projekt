@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def correct_classification_overview(mean_array, std_array, model,
+def correct_classification_overview(mean_array, sem_array, model,
                                     selection_names):
 
     fig, ax = plt.subplots()
@@ -11,9 +11,9 @@ def correct_classification_overview(mean_array, std_array, model,
     indices = [i for i, _ in enumerate(selection_names)]
     colors_mask = np.logical_or(
         ((mean_array -
-          std_array) > 0.5),
+          sem_array) > 0.5),
         ((mean_array +
-          std_array) < 0.5)
+          sem_array) < 0.5)
     )
     colors = []
     for mask_value in colors_mask:
@@ -26,14 +26,23 @@ def correct_classification_overview(mean_array, std_array, model,
 
             colors.append("#CCCCFF")
 
-    ax.bar(indices, mean_array, yerr=std_array, color=colors, alpha=0.95)
+    ax.bar(indices, mean_array, yerr=sem_array, color=colors, alpha=0.95)
     ax.plot([-1, len(selection_names)], [0.5, 0.5], color="red", linewidth=3,
-            linestyle="--", zorder=0)
-    xtick_label = [
-        f"{i:.2f} \u00b1 {j:.2f}\n\n{k}" for i, j, k in zip(mean_array,
-                                                            std_array,
-                                                            selection_names)
-    ]
+            linestyle="--")
+
+    xtick_label = []
+    for mean, sem, sel_name in zip(mean_array, sem_array, selection_names):
+
+        # check if values are valid
+        if np.any(mean):
+
+            xtick_label.append(f"{mean:.2f} \u00b1 {sem:.2f}\n\n{sel_name}")
+
+        # if values are missing, adjust label
+        else:
+
+            xtick_label.append(f"Values missing\n\n{sel_name}")
+
     ax.set_xticks(indices)
     ax.set_xticklabels(xtick_label, fontsize=15, fontweight="bold", y=0.085)
     ax.set_title(f"{model}", fontsize=14, fontweight="bold")

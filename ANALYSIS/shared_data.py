@@ -19,12 +19,12 @@ SELECTION_DICT = {
     "uL22": "segid S",
     "uL22_tip": "segid S and resid 85:95",
     "uL22_and_surroundings": "((around 10 segid S) and "
-    "not (segid y)) or (segid S)",
-            "uL22_tip_and_surroundings": "(segid S and "
-    "(resid 89:93)) or "
-    "(segid A and (resid 746 "
-    "747 748 750 751 1614))"
-        }
+                             "not (segid y)) or (segid S)",
+    "uL22_tip_and_surroundings": "(segid S and "
+                                 "(resid 89:93)) or "
+                                 "(segid A and (resid 746 "
+                                 "747 748 750 751 1614))"
+}
 
 SELECTION_NAMES_PLOTTING = {"uL22": "uL22",
                             "uL22_tip": "uL22 tip",
@@ -52,12 +52,12 @@ PARAMS = {"svc": {"C": [0.1, 1, 10]},
 
 MODEL_NAMES_PLOTTING = {"svc": "Support Vector Classifier",
                         "logistic_regression": "Logistic Regression",
-                        "decision tree": "Decision Tree",
+                        "decision_tree": "Decision Tree",
                         "random_forest": "Random Forest",
                         "knn": "K-Nearest Neighbors",
                         "mlp": "Multilayer Perceptron",
                         "gnb": "Gaussian Naive Bayes",
-                        "ada": "AdaBoost classifier"
+                        "ada": "AdaBoost Classifier"
                         }
 
 # all possible combinations of trajectory pairs
